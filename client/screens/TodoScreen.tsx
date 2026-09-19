@@ -87,7 +87,6 @@ const TodoScreen = ({ navigation }: any) => {
     }
   };
 
-  // Update Todo Title Function
   const updateTodoTitle = async (id: string) => {
     if (!editingTitle.trim()) return;
 
@@ -190,6 +189,25 @@ const TodoScreen = ({ navigation }: any) => {
               >
                 {todo.title}
               </Text>
+              
+              {/* Status Badge */}
+              <View
+                style={[
+                  styles.badge,
+                  todo.completed ? styles.completedBadge : styles.pendingBadge,
+                ]}
+              >
+                <Text
+                  style={[
+                    styles.badgeText,
+                    todo.completed
+                      ? styles.completedBadgeText
+                      : styles.pendingBadgeText,
+                  ]}
+                >
+                  {todo.completed ? "Completed" : "Pending"}
+                </Text>
+              </View>
             </Pressable>
           )}
 
@@ -287,6 +305,30 @@ const styles = StyleSheet.create({
   completed: {
     textDecorationLine: "line-through",
     color: "#888",
+  },
+  // Badge Styles
+  badge: {
+    alignSelf: "flex-start",
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+    borderRadius: 4,
+    marginTop: 4,
+  },
+  pendingBadge: {
+    backgroundColor: "#FEF3C7", // Soft yellow/orange
+  },
+  completedBadge: {
+    backgroundColor: "#DCFCE7", // Soft green
+  },
+  badgeText: {
+    fontSize: 11,
+    fontWeight: "700",
+  },
+  pendingBadgeText: {
+    color: "#D97706",
+  },
+  completedBadgeText: {
+    color: "#16A34A",
   },
   editButton: {
     backgroundColor: "#2563EB",
