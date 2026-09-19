@@ -1,0 +1,10 @@
+node_modules/
+.env
+*.env
+
+android/.gradle/
+android/app/build/
+android/build/
+AndroidTemp/
+client/server/
+client/android/app/debug.keystore
